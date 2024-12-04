@@ -4,7 +4,7 @@ This Python script automates the process of creating timesheets for employees by
 
 ## How it Works
 
-The script reads a list of employee names from a text file (`employee_list.txt`) and uses the Google Drive API to create a copy of a template Google Sheet for each employee. The new timesheets are named "{year}作業日報_{employee_name}" and placed in a specified Google Drive folder.
+The script reads a list of employee names from a text file (`employee_list.txt`) and uses the Google Drive API to create a copy of a template Google Sheet for each employee. The new timesheets are named "`{year}作業日報_{employee_name}`" and placed in a specified Google Drive folder.
 
 ## Prerequisites
 
