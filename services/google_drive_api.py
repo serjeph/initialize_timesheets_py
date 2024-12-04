@@ -4,7 +4,6 @@ import os.path
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
 
 SCOPES = ['https://www.googleapis.com/auth/drive']
@@ -12,7 +11,17 @@ SCOPES = ['https://www.googleapis.com/auth/drive']
 TOKEN_PATH = "./google_credential/token.json"
 
 def get_service():
-    
+    """
+    Authenticates with the Google Drive API and returns a service object.
+
+    This function handles the OAuth2 authentication flow, including:
+      - Checking for existing credentials.
+      - Refreshing expired credentials.
+      - Initiating the authorization flow if no valid credentials are found.
+
+    Returns:
+        googleapiclient.discovery.Resource: A service object for interacting with the Google Drive API.
+    """    
     creds = None
 
     if os.path.exists(TOKEN_PATH):
