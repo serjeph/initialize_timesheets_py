@@ -1,8 +1,10 @@
 # main.py
 import os
+import time
 from dotenv import load_dotenv
 
 from helper.produce_timesheets import copy_gsheets
+from helper.export import output_ids
 
 load_dotenv()
 
@@ -24,8 +26,16 @@ def main():
             for employee in employees:
                 # Remove potential newline characters from employee name
                 employee_name = employee.strip()
-                copy_gsheets(os.getenv('FILE_ID'), os.getenv('FOLDER_ID'), f"2025作業日報_{employee_name}")
 
+                spreadsheet_id = copy_gsheets(os.getenv('FILE_ID'), 
+                                              os.getenv('FOLDER_ID'), 
+                                              f"2025作業日報_{employee_name}")
+                
+                output_ids(os.getenv('OUTPUT_DIRECTORY'), employee_name, spreadsheet_id)
+
+                time.sleep(10)
+                
+                
     except Exception as ex:
         print(f"Error occurred: {ex}")
 

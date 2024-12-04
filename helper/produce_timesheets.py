@@ -26,7 +26,7 @@ def copy_gsheets(file_id, folder_id, new_title):
             supportsAllDrives = True
         ).execute()
 
-        print(f"File copied successfully! New file ID: [{copied_file['id']}] New file name: [{new_title}]\n")
+        print(f"Timesheet created successfully! New file ID: [{copied_file['id']}] New file name: [{new_title}]")
         return copied_file['id']
     
     except Exception as ex:
