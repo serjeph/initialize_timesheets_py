@@ -7,7 +7,9 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.errors import HttpError
 from googleapiclient.discovery import build
 
-SCOPES = ['https://www.googleapis.com/auth/drive']
+SCOPES = ['https://www.googleapis.com/auth/drive',
+          'https://www.googleapis.com/auth/drive.appdata',
+          'https://www.googleapis.com/auth/drive.file']
 
 TOKEN_PATH = "./google_credential/token.json"
 

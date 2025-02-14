@@ -1,14 +1,16 @@
 # produce_timesheets.py
 
-def copy_gsheets(service, file_id, folder_id, new_title):
-    
+from services.google_drive_api import get_service
 
+def copy_gsheets(file_id, folder_id, new_title, service = get_service()):
+    
     try:
         copied_file = service.files().copy(
             fileId = file_id,
             body = {
-                'parents': [folder_id],
-                'name' : new_title
+                'parent': [folder_id],
+                'name' : new_title,
+                'supportsAllDrives': True
             }
         ).execute()
 
@@ -19,3 +21,7 @@ def copy_gsheets(service, file_id, folder_id, new_title):
         print(f'An error occurred: {e}')
         return None
     
+
+if __name__ == "__main__":
+    service = get_service()
+    copy_gsheets()
